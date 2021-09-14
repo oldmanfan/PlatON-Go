@@ -229,6 +229,11 @@ func (e *revertError) ErrorData() interface{} {
 	return e.reason
 }
 
+// ChainId to detect the chain id
+func (b *SimulatedBackend) ChainID(ctx context.Context) (*big.Int, error) {
+	return b.config.ChainID, nil
+}
+
 // CallContract executes a contract call.
 func (b *SimulatedBackend) CallContract(ctx context.Context, call ethereum.CallMsg, blockNumber *big.Int) ([]byte, error) {
 	b.mu.Lock()
